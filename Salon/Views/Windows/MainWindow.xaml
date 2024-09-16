@@ -1,0 +1,121 @@
+﻿<Window x:Class="Salon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Salon"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="470" Width="800">
+    <Grid>
+
+        <!-- Фон -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#5B5B5B" Offset="0.1" />
+                <GradientStop Color="#FDD9DA" Offset="0.65" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <!-- Левая часть с логотипом -->
+        <Grid>
+
+            <Ellipse Width="290" Height="290" HorizontalAlignment="Left" Margin="50,64,0,65">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="\Images\image.png" Stretch="Fill" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse Width="50" Height="50" HorizontalAlignment="Left" Margin="62,78,0,291" >
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="\Images\Ellipse_29.png" Stretch="Fill" />
+                </Ellipse.Fill>
+            </Ellipse>
+
+
+        </Grid>
+
+        <!-- Правая часть с формой авторизации -->
+        <StackPanel HorizontalAlignment="Right" Margin="0,50,100,50" Width="300" VerticalAlignment="Top">
+            <TextBlock Text="Авторизация" Foreground="White" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20" FontFamily="IBM Plex Serif" />
+
+            <!-- Поле Логин со скругленными углами, замочком и Placeholder -->
+            <Border Width="270" CornerRadius="20" Background="#F795A4 " Padding="5" Margin="0,0,0,10">
+                <Grid>
+                    <!-- Иконка замочка -->
+                    <Image Source="\Images\padlock.png" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" />
+
+                    <!-- Текстовое поле с Placeholder -->
+                    <TextBox x:Name="loginTextBox" Background="#F795A4 " Height="30" FontSize="16" 
+                             HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                             BorderThickness="0" Margin="32,0,3,0" Foreground="White"
+                             GotFocus="loginTextBox_GotFocus"  LostFocus="loginTextBox_LostFocus"/>
+
+                    <!-- Placeholder -->
+                    <TextBlock x:Name="loginPlaceholder" FontFamily="IBM Plex Serif"  IsHitTestVisible="False" Text="Логин" Foreground="White" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0" />
+                </Grid>
+            </Border>
+
+            <!-- Поле Пароль со скругленными углами -->
+            <Border Width="270" CornerRadius="20" Background="#F795A4 " Padding="5" Margin="0,0,0,10">
+                <Grid>
+
+                    <Image Source="\Images\key.png" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" >
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="44.762"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+
+                    <PasswordBox x:Name="passwordBox" Background="#F795A4 " 
+                                 Height="30" FontSize="16" Foreground="White" 
+                             HorizontalContentAlignment="Left" 
+                                 VerticalContentAlignment="Center"
+                             BorderThickness="0" Margin="27,0,3,0"
+                                  GotFocus="passwordBox_GotFocus"  
+                                 LostFocus="passwordBox_LostFocus"/>
+
+                    <TextBlock x:Name="passwordPlaceholder" 
+                               IsHitTestVisible="False" 
+                               Text="Пароль" Foreground="White" 
+                               FontSize="18" VerticalAlignment="Center" 
+                               HorizontalAlignment="Left" Margin="50,0,0,0" />
+
+                </Grid>
+            </Border>
+
+            <!-- Забыл пароль -->
+            <TextBlock Text="Забыли логин или пароль?" HorizontalAlignment="Center" FontSize="16" Foreground="Gray" Margin="0,0,0,10" />
+
+            <!-- Кнопка Войти со скругленными углами -->
+            <Button Content="Войти" 
+                    Width="300" Height="50" 
+                    Background="#FE9CB0 " Foreground="White" 
+                    FontSize="22" HorizontalAlignment="Center" 
+                    BorderThickness="0" Margin="0,10,0,0" 
+                    >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="25">
+                            <ContentPresenter 
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <!-- Ссылка на создание аккаунта -->
+            <TextBlock  Text="У вас еще нет аккаунта?" 
+                       HorizontalAlignment="Center" 
+                       FontSize="16" Foreground="Gray" 
+                       Margin="0,20,0,0"
+                    TextDecorations="Underline" Cursor="Hand"
+           MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
