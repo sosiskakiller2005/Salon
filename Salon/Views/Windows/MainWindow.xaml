@@ -5,15 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="MainWindow" Height="470" Width="800">
+        Height="470" Width="800"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
     <Grid>
-
         <!-- Фон -->
         <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="#5B5B5B" Offset="0.1" />
-                <GradientStop Color="#FDD9DA" Offset="0.65" />
-            </LinearGradientBrush>
+                <ImageBrush ImageSource="\Images\Desktop - 1.png" Stretch="UniformToFill"/>
         </Grid.Background>
 
         <!-- Левая часть с логотипом -->
@@ -24,13 +21,6 @@
                     <ImageBrush ImageSource="\Images\image.png" Stretch="Fill" />
                 </Ellipse.Fill>
             </Ellipse>
-            <Ellipse Width="50" Height="50" HorizontalAlignment="Left" Margin="62,78,0,291" >
-                <Ellipse.Fill>
-                    <ImageBrush ImageSource="\Images\Ellipse_29.png" Stretch="Fill" />
-                </Ellipse.Fill>
-            </Ellipse>
-
-
         </Grid>
 
         <!-- Правая часть с формой авторизации -->

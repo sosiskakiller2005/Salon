@@ -62,5 +62,19 @@ namespace Salon
                 passwordPlaceholder.Visibility = Visibility.Visible;
             }
         }
+
+        private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            double currentLeft = this.Left;
+            double currentTop = this.Top;
+
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+
+
+            mainWindow.Left = currentLeft;
+            mainWindow.Top = currentTop;
+        }
     }
 }
