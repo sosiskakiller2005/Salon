@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Salon"
         mc:Ignorable="d"
-        Title="SuperMainWindow" Height="470" Width="800">
+        Height="750" Width="1440"
+        WindowStartupLocation="CenterScreen" >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60" />
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="4*" />
-            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="0.09*" />
+            <ColumnDefinition Width="0.35*"/>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="0.4*"/>
         </Grid.ColumnDefinitions>
 
+        <!--#region Меню-->
         <Grid Background="pink">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
@@ -27,69 +29,53 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-            <Ellipse Height="40" Width="40" >
+            <Ellipse Height="60" Width="60" >
                 <Ellipse.Fill>
                     <ImageBrush ImageSource="\Images\image.png" Stretch="Fill" />
                 </Ellipse.Fill>
                 </Ellipse>
 
-            <Image Source="\Images\house.png" Grid.Row="2"
-                   Height="30" Width="30"
-                   MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
+            <Image Name="HomeBtn" Source="\Images\house.png" Grid.Row="2"
+                   Height="50" Width="50"
+                   MouseLeftButtonUp="HomeBtn_MouseLeftButtonUp"/>
 
-            <Image Source="\Images\user.png" Grid.Row="4"
-                   Height="30" Width="30"
-                   MouseLeftButtonUp="Image_MouseLeftButtonUp_1"/>
+            <Image Name="EmployeesBtn" Source="\Images\user.png" Grid.Row="4"
+                   Height="50" Width="50"
+                   MouseLeftButtonUp="EmployeesBtn_MouseLeftButtonUp"/>
 
-            <Image Source="\Images\nail.png" Grid.Row="6"
-                   Height="40" Width="40"
-                   MouseLeftButtonUp="Image_MouseLeftButtonUp_2"/>
+            <Image Name="ServicesBtn" Source="\Images\nail.png" Grid.Row="6"
+                   Height="50" Width="50"
+                   MouseLeftButtonUp="ServicesBtn_MouseLeftButtonUp"/>
 
-            <Image Source="\Images\file.png" Grid.Row="8"
-                   Height="35" Width="35"
-                   MouseLeftButtonUp="Image_MouseLeftButtonUp_3"/>
+            <Image Name="FileBtn" Source="\Images\file.png" Grid.Row="8"
+                   Height="50" Width="50"
+                   MouseLeftButtonUp="FileBtn_MouseLeftButtonUp"/>
 
         </Grid>
+        <!--#endregion-->
 
-        <Grid Grid.Column="1" Background="Gray">
-            
-        </Grid>
+        <!--#region Поиск сотрудников -->
+        <StackPanel Grid.Column="1" Background="#FFF4F7FE">
+            <Border Height="20"/>
+            <Grid>
+                <TextBox Name="SearchTb" TextChanged="SearchTb_TextChanged"  Padding="35 0 0 0"/>
+                <Image Source="\Images\search-icon.png" Stretch="Fill" Width="25" Height="25" HorizontalAlignment="Left" Margin="20 0 0 0"/>
+            </Grid>
+            <Border Height="10"/>
+            <ListBox Name="EmployeesLb" Style="{StaticResource EmployeeLb}" MouseDoubleClick="EmployeesLb_MouseDoubleClick" Background="Transparent" BorderThickness="0"/>
 
-        <Grid Grid.Column="3">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="0.2*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="0.3*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="0.2*" />
-                <ColumnDefinition Width="1*" />
-                
-            </Grid.ColumnDefinitions>
+        </StackPanel>
+        <!--#endregion-->
 
-            
-            <Button Grid.Column="0" Grid.Row="1"  
-                     
-                    Background="Blue " Foreground="White" 
-                    FontSize="20" HorizontalAlignment="Center" 
-                    BorderThickness="0">
-                <TextBlock Text="Записать на маникюр" TextWrapping="Wrap"/>
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" 
-                                CornerRadius="10">
-                            <ContentPresenter 
-                                HorizontalAlignment="Center" 
-                                VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-        </Grid>
-        
+        <Frame Name="MainFrm" Grid.Column="2"/>
+
+        <!--#region Второе меню -->
+        <StackPanel Grid.Column="3">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="TimeTbl" FontSize="15"/>
+            </StackPanel>
+        </StackPanel>
+        <!--#endregion-->
     </Grid>
 </Window>
+    

@@ -9,8 +9,13 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+using Salon.AppData;
+using Salon.Model;
+using Salon.Views.Pages;
 
 namespace Salon
 {
@@ -19,29 +24,71 @@ namespace Salon
     /// </summary>
     public partial class SuperMainWindow : Window
     {
+        private SityStarDbEntities _context = App.GetContext();
+        private List<Employees> employees = App.GetContext().Employees.ToList();
         public SuperMainWindow()
         {
             InitializeComponent();
+            HomePage homePage = new HomePage();
+            MainFrm.Navigate(homePage);
+
+            #region Отображение текущего времени
+            AppData.Clock.StartClock();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += (sender, e) =>
+            {
+                TimeTbl.Text = DateTime.Now.ToString("HH:mm");
+            };
+            timer.Start();
+            #endregion
+
+            EmployeesLb.ItemsSource = _context.Employees.ToList();
         }
 
-        private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void HomeBtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
 
         }
 
-        private void Image_MouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
+        private void EmployeesBtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
 
         }
 
-        private void Image_MouseLeftButtonUp_2(object sender, MouseButtonEventArgs e)
+        private void ServicesBtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
 
         }
 
-        private void Image_MouseLeftButtonUp_3(object sender, MouseButtonEventArgs e)
+        private void FileBtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
 
         }
+
+        private void EmployeesLb_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        #region Фильтрация
+        private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Filter();
+        }
+        private void Filter ()
+        {
+            if (SearchTb.Text != string.Empty)
+            {
+                employees = employees.Where(em => em.Fullname.Contains(SearchTb.Text)).ToList();
+            }
+            else
+            {
+                employees = App.GetContext().Employees.ToList();
+            }
+            EmployeesLb.ItemsSource = employees;    
+        }
+        #endregion
+
     }
 }

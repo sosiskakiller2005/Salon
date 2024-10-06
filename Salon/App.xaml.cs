@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Salon.Model;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,14 @@ namespace Salon
     /// </summary>
     public partial class App : Application
     {
+        private static SityStarDbEntities _context;
+        public static SityStarDbEntities GetContext()
+        {
+            if (_context == null)
+            {
+                _context = new SityStarDbEntities();
+            }
+            return _context;
+        }
     }
 }

@@ -32,5 +32,6 @@ namespace Salon.Model
         public DbSet<Sales> Sales { get; set; }
         public DbSet<SaleServices> SaleServices { get; set; }
         public DbSet<Services> Services { get; set; }
+        public DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

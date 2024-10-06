@@ -62,6 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppData\Clock.cs" />
     <Compile Include="Model\Client.cs">
       <DependentUpon>SityStarModel.tt</DependentUpon>
     </Compile>
@@ -98,12 +99,45 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SityStarModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\sysdiagrams.cs">
+      <DependentUpon>SityStarModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\EmployeesPage.xaml.cs">
+      <DependentUpon>EmployeesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\SuperMainWindow.xaml.cs">
       <DependentUpon>SuperMainWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Styles\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ListBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TextBlockStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TextBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\EmployeesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -183,14 +217,12 @@
   <ItemGroup>
     <Resource Include="Images\file.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AppData\" />
-    <Folder Include="Views\Pages\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\Desktop - 1.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\search-icon.png" />
     <Content Include="Model\SityStarModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SityStarModel.Context.cs</LastGenOutput>

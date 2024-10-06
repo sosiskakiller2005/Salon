@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="Button">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Width" Value="300" />
+        <Setter Property="Height" Value="50" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="#FE9CB0" />
+    </Style>
+</ResourceDictionary>
