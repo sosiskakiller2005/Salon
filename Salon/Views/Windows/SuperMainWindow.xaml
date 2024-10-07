@@ -67,7 +67,7 @@
         </StackPanel>
         <!--#endregion-->
 
-        <Frame Name="MainFrm" Grid.Column="2"/>
+        <Frame Name="MainFrm" Grid.Column="2" NavigationUIVisibility="Hidden"/>
 
         <!--#region Второе меню -->
         <StackPanel Grid.Column="3">

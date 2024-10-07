@@ -22,4 +22,60 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="ListBox" x:Key="BigEmployeeLb">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Height="auto">
+                        <Border Height="5"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="180" Height="180">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="{Binding Photo}" Stretch="Fill" />
+                                </Border.Background>
+                            </Border>
+                            <Border Width="50"/>
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="{Binding Fullname}" FontSize="27" TextWrapping="Wrap" Width="250" VerticalAlignment="Center" TextAlignment="Center"/>
+                                <TextBlock VerticalAlignment="Center" TextAlignment="Center">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0}, Стаж: {1} лет">
+                                            <Binding Path="Position.Name"/>
+                                            <Binding Path="Expirience"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                        <Border Height="5"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ListBox" x:Key="ServicesLb">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Height="auto">
+                        <Border Height="5"/>
+                        <StackPanel>
+                                <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Width="250" VerticalAlignment="Center" TextDecorations="Underline"/>
+                            <TextBlock Text="{Binding Price, StringFormat={}{0} ₽}" TextWrapping="Wrap"  VerticalAlignment="Center" TextDecorations="Underline"/>
+                        </StackPanel>
+                        <Border Height="5"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

@@ -1,4 +1,4 @@
-﻿<Page x:Class="Salon.Views.Pages.EmployeesPage"
+﻿<Page x:Class="Salon.Views.Pages.ServicesPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,11 +6,11 @@
       xmlns:local="clr-namespace:Salon.Views.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="734" d:DesignWidth="782"
-      Title="EmployeesPage">
+      Title="ServicesPage">
 
-    <StackPanel>
-        <TextBlock Text="Мастера" FontSize="25" Margin="10"/>
+    <StackPanel Margin="20">
+        <TextBlock Text="Услуги" FontSize="25" Margin="10" TextDecorations="Underline"/>
         <Border Height="20"/>
-        <ListBox Name="EmployeesLb" Style="{StaticResource BigEmployeeLb}" ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="650"/>
+        <ListBox Name="ServicesLb" Style="{StaticResource ServicesLb}" Height="600"/>
     </StackPanel>
 </Page>

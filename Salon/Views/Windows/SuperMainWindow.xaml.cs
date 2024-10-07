@@ -46,19 +46,23 @@ namespace Salon
             EmployeesLb.ItemsSource = _context.Employees.ToList();
         }
 
+        #region навигация
         private void HomeBtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            HomePage homePage = new HomePage();
+            MainFrm.Navigate(homePage);
         }
 
         private void EmployeesBtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            EmployeesPage employeesPage = new EmployeesPage();
+            MainFrm.Navigate(employeesPage);
         }
 
         private void ServicesBtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            ServicesPage servicesPage = new ServicesPage();
+            MainFrm.Navigate(servicesPage);
         }
 
         private void FileBtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -70,6 +74,7 @@ namespace Salon
         {
 
         }
+        #endregion
 
         #region Фильтрация
         private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)

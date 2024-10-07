@@ -25,7 +25,7 @@ namespace Salon.Model
         public string Surname { get; set; }
         public string Fullname { get
             {
-                return Lastname + " " + Name + " " + Surname;   
+                return Lastname + " " + Name + " " + Lastname;
             } }
         public int PositionId { get; set; }
         public int Expirience { get; set; }

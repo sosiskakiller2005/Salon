@@ -17,21 +17,15 @@ using System.Windows.Shapes;
 namespace Salon.Views.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для EmployeesPage.xaml
+    /// Логика взаимодействия для ServicesPage.xaml
     /// </summary>
-    public partial class EmployeesPage : Page
+    public partial class ServicesPage : Page
     {
         private SityStarDbEntities _context = App.GetContext();
-        public EmployeesPage()
+        public ServicesPage()
         {
             InitializeComponent();
-            EmployeesLb.ItemsSource = _context.Employees.ToList();
+            ServicesLb.ItemsSource = _context.Services.ToList();
         }
-
-        private void EmployeesLb_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
     }
 }
