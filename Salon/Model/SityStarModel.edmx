@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище SityStarDbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="Id" />
@@ -80,6 +90,42 @@
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Duration" Type="time" Precision="7" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Appointment_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Appointment_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Appointment_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Employees_Position">
           <End Role="Position" Type="Self.Position" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
@@ -153,6 +199,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище SityStarDbModelContainer">
+          <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
@@ -160,6 +207,18 @@
           <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleServices" EntityType="Self.SaleServices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Appointment_Client" Association="Self.FK_Appointment_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Appointment_Employees" Association="Self.FK_Appointment_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Appointment_Services" Association="Self.FK_Appointment_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
           <AssociationSet Name="FK_Employees_Position" Association="Self.FK_Employees_Position">
             <End Role="Position" EntitySet="Position" />
             <End Role="Employees" EntitySet="Employees" />
@@ -202,6 +261,7 @@
           <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DateOfRegistration" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Client" FromRole="Client" ToRole="Sales" />
+          <NavigationProperty Name="Appointment" Relationship="SityStarDbModel.FK_Appointment_Client" FromRole="Client" ToRole="Appointment" />
         </EntityType>
         <EntityType Name="Employees">
           <Key>
@@ -219,6 +279,7 @@
           <NavigationProperty Name="Position" Relationship="Self.FK_Employees_Position" FromRole="Employees" ToRole="Position" />
           <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Employees" FromRole="Employees" ToRole="Sales" />
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Appointment" Relationship="SityStarDbModel.FK_Appointment_Employees" FromRole="Employees" ToRole="Appointment" />
         </EntityType>
         <EntityType Name="Position">
           <Key>
@@ -275,6 +336,7 @@
           <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Duration" Type="Time" Nullable="false" Precision="7" />
           <NavigationProperty Name="SaleServices" Relationship="Self.FK_SaleServices_Services" FromRole="Services" ToRole="SaleServices" />
+          <NavigationProperty Name="Appointment" Relationship="SityStarDbModel.FK_Appointment_Services" FromRole="Services" ToRole="Appointment" />
         </EntityType>
         <Association Name="FK_Sales_Client">
           <End Role="Client" Type="Self.Client" Multiplicity="1" />
@@ -380,7 +442,69 @@
             <End Role="Services" EntitySet="Services" />
             <End Role="SaleServices" EntitySet="SaleServices" />
           </AssociationSet>
+          <EntitySet Name="Appointment" EntityType="SityStarDbModel.Appointment" />
+          <AssociationSet Name="FK_Appointment_Client" Association="SityStarDbModel.FK_Appointment_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Appointment_Employees" Association="SityStarDbModel.FK_Appointment_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Appointment_Services" Association="SityStarDbModel.FK_Appointment_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="SityStarDbModel.FK_Appointment_Client" FromRole="Appointment" ToRole="Client" />
+          <NavigationProperty Name="Employees" Relationship="SityStarDbModel.FK_Appointment_Employees" FromRole="Appointment" ToRole="Employees" />
+          <NavigationProperty Name="Services" Relationship="SityStarDbModel.FK_Appointment_Services" FromRole="Appointment" ToRole="Services" />
+        </EntityType>
+        <Association Name="FK_Appointment_Client">
+          <End Type="SityStarDbModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="SityStarDbModel.Appointment" Role="Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Appointment_Employees">
+          <End Type="SityStarDbModel.Employees" Role="Employees" Multiplicity="1" />
+          <End Type="SityStarDbModel.Appointment" Role="Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Appointment_Services">
+          <End Type="SityStarDbModel.Services" Role="Services" Multiplicity="1" />
+          <End Type="SityStarDbModel.Appointment" Role="Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -466,6 +590,17 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Appointment">
+            <EntityTypeMapping TypeName="SityStarDbModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointment">
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

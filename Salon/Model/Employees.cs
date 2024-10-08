@@ -17,16 +17,20 @@ namespace Salon.Model
         public Employees()
         {
             this.Sales = new HashSet<Sales>();
+            this.Appointment = new HashSet<Appointment>();
         }
     
         public int Id { get; set; }
         public string Lastname { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public string Fullname { get
+        public string Fullname
+        {
+            get
             {
-                return Lastname + " " + Name + " " + Lastname;
-            } }
+                return Lastname + " " + Name + " " + Surname;
+            }
+        }
         public int PositionId { get; set; }
         public int Expirience { get; set; }
         public string Phone { get; set; }
@@ -36,5 +40,6 @@ namespace Salon.Model
     
         public virtual Position Position { get; set; }
         public virtual ICollection<Sales> Sales { get; set; }
+        public virtual ICollection<Appointment> Appointment { get; set; }
     }
 }

@@ -12,21 +12,16 @@ namespace Salon.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Services
+    public partial class Appointment
     {
-        public Services()
-        {
-            this.SaleServices = new HashSet<SaleServices>();
-            this.Appointment = new HashSet<Appointment>();
-        }
-    
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public decimal Price { get; set; }
-        public System.TimeSpan Duration { get; set; }
+        public System.DateTime DateTime { get; set; }
+        public int EmployeeId { get; set; }
+        public int ClientId { get; set; }
+        public int ServiceId { get; set; }
     
-        public virtual ICollection<SaleServices> SaleServices { get; set; }
-        public virtual ICollection<Appointment> Appointment { get; set; }
+        public virtual Client Client { get; set; }
+        public virtual Employees Employees { get; set; }
+        public virtual Services Services { get; set; }
     }
 }

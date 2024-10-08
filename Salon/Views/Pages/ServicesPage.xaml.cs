@@ -25,7 +25,7 @@ namespace Salon.Views.Pages
         public ServicesPage()
         {
             InitializeComponent();
-            ServicesLb.ItemsSource = _context.Services.ToList();
+            ServicesLb.ItemsSource = _context.Services.ToList()  ;
         }
     }
 }

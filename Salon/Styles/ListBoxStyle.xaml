@@ -78,4 +78,25 @@
         </Setter>
     </Style>
 
+    <Style TargetType="ListBox" x:Key="ClientsLb">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Height="auto">
+                        <Border Height="5"/>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Fullname}" TextWrapping="Wrap" Width="250" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding DateOfRegistration, StringFormat={}Дата регистрации: {0:dd.MM.yyy}}" TextWrapping="Wrap"  VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <Border Height="5"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
 </ResourceDictionary>

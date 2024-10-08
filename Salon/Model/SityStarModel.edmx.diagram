@@ -18,6 +18,10 @@
         <AssociationConnector Association="SityStarDbModel.FK_Sales_Products" ManuallyRouted="false" />
         <AssociationConnector Association="SityStarDbModel.FK_SaleServices_Sales" ManuallyRouted="false" />
         <AssociationConnector Association="SityStarDbModel.FK_SaleServices_Services" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SityStarDbModel.Appointment" Width="1.5" PointX="7.5" PointY="4.75" />
+        <AssociationConnector Association="SityStarDbModel.FK_Appointment_Client" />
+        <AssociationConnector Association="SityStarDbModel.FK_Appointment_Employees" />
+        <AssociationConnector Association="SityStarDbModel.FK_Appointment_Services" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

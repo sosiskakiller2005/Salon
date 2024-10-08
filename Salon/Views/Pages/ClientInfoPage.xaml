@@ -1,0 +1,59 @@
+﻿<Page x:Class="Salon.Views.Pages.ClientInfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Salon.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="734" d:DesignWidth="782"
+      Title="ClientInfoPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Заполните информацию о клиенте" FontSize="30"/>
+        <TextBlock Margin="540 10 0 0"><Hyperlink Name="SelectClientHl" Click="SelectClientHl_Click"><TextBlock Name="SelectTbl" Text="Выбрать существующего"/></Hyperlink></TextBlock>
+        <TextBlock Text="Фамилия:" Grid.Row="1"/>
+        <TextBox Name="LastnameTb" Grid.Row="2"/>
+        <TextBlock Text="Имя:" Grid.Row="3"/>
+        <TextBox Name="NameTb" Grid.Row="4"/>
+        <TextBlock Text="Отчество:" Grid.Row="5"/>
+        <TextBox Name="SurnameTb" Grid.Row="6"/>
+        <TextBlock Text="Номер телефона:" Grid.Row="7"/>
+        <TextBox Name="PhoneNumberTb" Grid.Row="8" PreviewTextInput="PhoneNumberTb_PreviewTextInput" MaxLength="11"/>
+        <TextBlock Text="Email:" Grid.Row="9"/>
+        <TextBox Name="EmailTb" Grid.Row="10"/>
+        <TextBlock Text="Дата рождения:" Grid.Row="11"/>
+        <DatePicker Name="BirthdayDp" Grid.Row="12"/>
+        <Button Name="AddBtn" Content="Добавить" Click="AddBtn_Click" Grid.Row="13" Margin="300 0 0 0" Width="200">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20" />
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Name="BackBtn" Content="Назад" Click="BackBtn_Click" Grid.Row="13" Margin="0 0 300 0" Width="200">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+    </Grid>
+</Page>

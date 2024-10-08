@@ -74,6 +74,34 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Name="TimeTbl" FontSize="15"/>
             </StackPanel>
+            <Border Height="50"/>
+            <StackPanel Orientation="Horizontal">
+                
+                <Button Name="AppointmentBtn" Click="AppointmentBtn_Click" Background="#0B103D" Foreground="White" Width="140" Height="200">
+                <Button.Content>
+                    <TextBlock Text="Запись к мастерам" TextWrapping="Wrap" FontSize="28" Padding="5" TextAlignment="Center"/>
+                </Button.Content>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+             
+                <Border Width="20"/>
+
+                <Button Name="EmptyDaysBtn" Click="EmptyDaysBtn_Click" Background="#722C6B" Foreground="White" Width="140" Height="200">
+                    <Button.Content>
+                        <TextBlock Text="Свободные окошки" TextWrapping="Wrap" FontSize="24" Padding="5" TextAlignment="Center"/>
+                    </Button.Content>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+            </StackPanel>
         </StackPanel>
         <!--#endregion-->
     </Grid>

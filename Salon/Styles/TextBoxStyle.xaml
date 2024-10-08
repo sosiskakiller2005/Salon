@@ -8,8 +8,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Border Name="bBorder" CornerRadius="20" Background="White" Padding="5"
-                            BorderThickness="2" BorderBrush="White">
+                    <Border Name="bBorder" CornerRadius="15" Background="White" Padding="5"
+                            BorderThickness="1" BorderBrush="Black">
                         <ScrollViewer Name="PART_ContentHost" FontSize="20" VerticalScrollBarVisibility="Disabled"/>
                     </Border>
                 </ControlTemplate>

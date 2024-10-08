@@ -44,6 +44,8 @@ namespace Salon
             #endregion
 
             EmployeesLb.ItemsSource = _context.Employees.ToList();
+
+            FrameHelper.selectedFrame = MainFrm;
         }
 
         #region навигация
@@ -71,6 +73,16 @@ namespace Salon
         }
 
         private void EmployeesLb_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        private void AppointmentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AppointmentPage appointmentPage = new AppointmentPage();
+            MainFrm.Navigate(appointmentPage);
+        }
+
+        private void EmptyDaysBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }
