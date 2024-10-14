@@ -98,5 +98,48 @@
         </Setter>
     </Style>
 
+    <Style TargetType="ListBox" x:Key="timetableLb">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Height="auto">
+                                <Border Height="10"/>
+                                <TextBlock Text="Услуга:" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                <Border Height="10"/>
+                                <TextBlock Text="Дата\время приема:"  VerticalAlignment="Center"/>
+                                <Border Height="10"/>
+                                <TextBlock Text="Клиент:"  VerticalAlignment="Center"/>
+                                <Border Height="10"/>
+                                <TextBlock Text="Мастер:"  VerticalAlignment="Center"/>
+                                <Border Height="10"/>
+                        </StackPanel>
+                        <StackPanel Height="auto" Grid.Column="2">
+                            <StackPanel>
+                                <Border Height="10"/>
+                                <TextBlock Text="{Binding Services.Name}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                <Border Height="10"/>
+                                <TextBlock Text="{Binding DateTime, StringFormat={}{0:dd.MM.yyy HH:mm}}" VerticalAlignment="Center"/>
+                                <Border Height="10"/>
+                                <TextBlock Text="{Binding Client.Fullname}" VerticalAlignment="Center"/>
+                                <Border Height="10"/>
+                                <TextBlock Text="{Binding Employees.Fullname}" VerticalAlignment="Center"/>
+                                <Border Height="10"/>
+                            </StackPanel>
+                            <Border Height="5"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 </ResourceDictionary>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Salon"
              xmlns:Salon="clr-namespace:DateTimePickerCustom;assembly=DateTimePickerCustom"
-             StartupUri="\Views\Windows\SuperMainWindow.xaml">
+             StartupUri="\Views\Windows\MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

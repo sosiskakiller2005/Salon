@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Salon.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,11 @@ namespace Salon.Views.Pages
     /// </summary>
     public partial class HomePage : Page
     {
+        private SityStarDbEntities _context = App.GetContext();
         public HomePage()
         {
             InitializeComponent();
+            TimetableLb.ItemsSource = _context.Appointment.ToList();
         }
     }
 }

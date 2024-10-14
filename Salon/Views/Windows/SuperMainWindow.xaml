@@ -62,7 +62,7 @@
                 <Image Source="\Images\search-icon.png" Stretch="Fill" Width="25" Height="25" HorizontalAlignment="Left" Margin="20 0 0 0"/>
             </Grid>
             <Border Height="10"/>
-            <ListBox Name="EmployeesLb" Style="{StaticResource EmployeeLb}" MouseDoubleClick="EmployeesLb_MouseDoubleClick" Background="Transparent" BorderThickness="0"/>
+            <ListBox Name="EmployeesLb" Style="{StaticResource EmployeeLb}" MouseDoubleClick="EmployeesLb_MouseDoubleClick" Background="Transparent" BorderThickness="0" Height="700" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
 
         </StackPanel>
         <!--#endregion-->

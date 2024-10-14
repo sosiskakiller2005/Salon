@@ -92,6 +92,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppData\AuthoriseHelper.cs" />
     <Compile Include="AppData\Clock.cs" />
     <Compile Include="AppData\FrameHelper.cs" />
     <Compile Include="AppData\MessageBoxHelper.cs" />
@@ -293,6 +294,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\search-icon.png" />
+    <Resource Include="Images\timetable.png" />
     <Content Include="Model\SityStarModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SityStarModel.Context.cs</LastGenOutput>

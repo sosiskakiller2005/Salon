@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Salon.AppData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -65,6 +66,23 @@ namespace Salon
 
             registrationWindow.Left = currentLeft;
             registrationWindow.Top = currentTop;
+        }
+
+        private void EntryBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(loginTextBox.Text) == false && string.IsNullOrEmpty(passwordBox.Password) == false)
+            {
+                if (AuthoriseHelper.Authorise(loginTextBox.Text, passwordBox.Password))
+                {
+                    SuperMainWindow superMainWindow = new SuperMainWindow();
+                    superMainWindow.Show();
+                    Close();
+                }
+            }
+            else
+            {
+                MessageBoxHelper.Error("Зaполните все поля для ввода.");
+            }
         }
     }
 }
