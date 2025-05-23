@@ -97,7 +97,7 @@ namespace Salon
         {
             if (SearchTb.Text != string.Empty)
             {
-                employees = employees.Where(em => em.Fullname.Contains(SearchTb.Text)).ToList();
+                //employees = employees.Where(em => em.Fullname.Contains(SearchTb.Text)).ToList();
             }
             else
             {

@@ -13,64 +13,82 @@
             <ImageBrush ImageSource="\Images\Desktop - 1.png" Stretch="UniformToFill"/>
         </Grid.Background>
 
-        <Grid>
-
-            <Ellipse Width="290" Height="290" HorizontalAlignment="Left" Margin="50,64,0,65">
-                <Ellipse.Fill>
-                    <ImageBrush ImageSource="\Images\image.png" Stretch="Fill" />
-                </Ellipse.Fill>
-            </Ellipse>
-            <Ellipse Width="50" Height="50" HorizontalAlignment="Left" Margin="62,78,0,291" >
-                <Ellipse.Fill>
-                    <ImageBrush ImageSource="\Images\Ellipse_29.png" Stretch="Fill" />
-                </Ellipse.Fill>
-            </Ellipse>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".09*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
 
 
-        </Grid>
-
-        <!-- Правая часть с формой авторизации -->
-        <StackPanel HorizontalAlignment="Right" Margin="0,50,100,50" Width="300" VerticalAlignment="Top">
-            <TextBlock Text="Регистрация" Foreground="White" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20" FontFamily="IBM Plex Serif" />
-
-            <!-- Поле Сотрудник со скругленными углами, замочком и Placeholder -->
+        <TextBlock Text="Регистрация" Foreground="White" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="IBM Plex Serif" Grid.ColumnSpan="2"/>
+        <StackPanel Grid.Row="1"  VerticalAlignment="Top">
             <Border Width="270" CornerRadius="20" Background="#F795A4 " Padding="5" Margin="0,0,0,10">
                 <Grid>
-                    <!-- Иконка замочка -->
                     <Image Source="\Images\padlock.png" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" />
-
-                    <!-- Текстовое поле с Placeholder -->
                     <TextBox x:Name="WorkerTextBox" Background="#F795A4 "  Height="30" FontSize="16" 
                              HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                              BorderThickness="0" Margin="32,0,3,0" Foreground="White"
-                             GotFocus="WorkerTextBox_GotFocus"  LostFocus="WorkerTextBox_LostFocus"/>
-
-                    <!-- Placeholder -->
-                    <TextBlock x:Name="workerPlaceholder" FontFamily="IBM Plex Serif"  IsHitTestVisible="False" Text="Сотрудник" Foreground="White" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0" />
+                             GotFocus="WorkerTextBox_GotFocus"  LostFocus="WorkerTextBox_LostFocus"
+                             Width="220" Style="{x:Null}"/>
+                    <TextBlock x:Name="workerPlaceholder" FontFamily="IBM Plex Serif"  IsHitTestVisible="False" Text="Имя" Foreground="White" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0" />
+                </Grid>
+            </Border>
+            <Border Width="270" CornerRadius="20" Background="#F795A4 " Padding="5" Margin="0,0,0,10">
+                <Grid>
+                    <Image Source="\Images\padlock.png" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" />
+                    <TextBox x:Name="LastnameTb" Background="#F795A4 "  Height="30" FontSize="16" 
+                 HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                 BorderThickness="0" Margin="32,0,3,0" Foreground="White"
+                 GotFocus="LastnameTb_GotFocus"  LostFocus="LastnameTb_LostFocus"
+                 Width="220" Style="{x:Null}"/>
+                    <TextBlock x:Name="lastnamePlaceHolder" FontFamily="IBM Plex Serif"  IsHitTestVisible="False" Text="Фамилия" Foreground="White" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0" />
+                </Grid>
+            </Border>
+            <Border Width="270" CornerRadius="20" Background="#F795A4 " Padding="5" Margin="0,0,0,10">
+                <Grid>
+                    <Image Source="\Images\padlock.png" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" />
+                    <TextBox x:Name="SurnameTb" Background="#F795A4 "  Height="30" FontSize="16" 
+                             HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                             BorderThickness="0" Margin="32,0,3,0" Foreground="White"
+                             GotFocus="SurnameTb_GotFocus"  LostFocus="SurnameTb_LostFocus"
+                             Width="220" Style="{x:Null}"/>
+                    <TextBlock x:Name="surnamePlaceholder" FontFamily="IBM Plex Serif"  IsHitTestVisible="False" Text="Отчество" Foreground="White" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0" />
                 </Grid>
             </Border>
 
-            <!-- Поле Логин со скругленными углами, замочком и Placeholder -->
             <Border CornerRadius="20" Width="270"  Background="#F795A4 " Padding="5" Margin="0,0,0,10">
                 <Grid>
-                    <!-- Иконка замочка -->
                     <Image Source="\Images\padlock.png" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" />
-
-                    <!-- Текстовое поле с Placeholder -->
                     <TextBox x:Name="loginTextBox" Background="#F795A4 " Height="30" FontSize="16" 
                              HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                             BorderThickness="0" Margin="32,0,3,0" Foreground="White"
-                             GotFocus="loginTextBox_GotFocus"  LostFocus="loginTextBox_LostFocus"/>
-
-                    <!-- Placeholder -->
+                             BorderThickness="0" Margin="32,0,3,0" Foreground="White" Style="{x:Null}"
+                             GotFocus="loginTextBox_GotFocus"  LostFocus="loginTextBox_LostFocus" Width="220"/>
                     <TextBlock x:Name="loginPlaceholder" FontFamily="IBM Plex Serif"  IsHitTestVisible="False" Text="Логин" Foreground="White" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0" />
                 </Grid>
             </Border>
 
-            <!-- Поле Пароль со скругленными углами -->
-            <Border Width="270" CornerRadius="20" Background="#F795A4 " Padding="5" Margin="0,0,0,10">
+            <ComboBox Name="RoleCmb" Style="{StaticResource roundedCornersComboBox}"/>
+            <Border Height="20"/>
+            <TextBlock Text="Опыт:" Foreground="White" FontSize="18" HorizontalAlignment="Center"/>
+            <TextBox x:Name="ExperienceTb" PreviewTextInput="ExperienceTb_PreviewTextInput"/>
+            <Border Height="20"/>
+            
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock Text="Телефон:" Foreground="White" FontSize="18" HorizontalAlignment="Center"/>
+            <TextBox x:Name="PhoneTb"/>
+            <Border Height="20"/>
+            <StackPanel Margin="0,10,0,0">
+                <Button Name="SelectPhotoBtn" Content="Выбрать фото" Click="SelectPhotoBtn_Click"/>
+                <TextBlock x:Name="PhotoFileNameTb" HorizontalAlignment="Center" Foreground="White" FontSize="14"/>
+            </StackPanel>
+            <Border Height="20"/>
+            <Border Width="270" CornerRadius="20" Background="#F795A4" Padding="5" Margin="0,0,0,10">
                 <Grid>
-
                     <Image Source="\Images\key.png" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" >
                         <Image.RenderTransform>
                             <TransformGroup>
@@ -81,30 +99,21 @@
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
-
                     <PasswordBox x:Name="passwordBox" Background="#F795A4 " 
-                                 Height="30" FontSize="16" Foreground="White" 
-                             HorizontalContentAlignment="Left" 
-                                 VerticalContentAlignment="Center"
-                             BorderThickness="0" Margin="27,0,3,0"
-                                  GotFocus="passwordBox_GotFocus"  
-                                 LostFocus="passwordBox_LostFocus"/>
-
+                         Height="30" FontSize="16" Foreground="White" 
+                     HorizontalContentAlignment="Left" 
+                         VerticalContentAlignment="Center"
+                     BorderThickness="0" Margin="27,0,3,0"
+                          GotFocus="passwordBox_GotFocus"  
+                         LostFocus="passwordBox_LostFocus"/>
                     <TextBlock x:Name="passwordPlaceholder" 
-                               IsHitTestVisible="False" 
-                               Text="Пароль" Foreground="White" 
-                               FontSize="18" VerticalAlignment="Center" 
-                               HorizontalAlignment="Left" Margin="50,0,0,0" />
-
+                       IsHitTestVisible="False" 
+                       Text="Пароль" Foreground="White" 
+                       FontSize="18" VerticalAlignment="Center" 
+                       HorizontalAlignment="Left" Margin="50,0,0,0" />
                 </Grid>
             </Border>
-
-
-
-            <!-- Ссылка на создание аккаунта -->
-
             <Grid>
-                <!-- Две строки для текста и одна колонка для галочки -->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
@@ -115,52 +124,32 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <!-- Первый TextBlock для текста "Согласны с политикой" в первой строке -->
                 <TextBlock Text="Согласны с политикой" 
-                       TextDecorations="Underline" Foreground="White" 
-                       FontSize="14" HorizontalAlignment="Center" 
-                       Grid.Column="0" Grid.Row="0"/>
+               TextDecorations="Underline" Foreground="White" 
+               FontSize="14" HorizontalAlignment="Center" 
+               Grid.Column="0" Grid.Row="0"/>
 
-                <!-- Второй TextBlock для текста "компании" во второй строке -->
                 <TextBlock Text="компании" 
-                       TextDecorations="Underline" Foreground="White" 
-                       FontSize="14" HorizontalAlignment="Center" 
-                       Grid.Column="0" Margin="119,18,116,12" RenderTransformOrigin="0.508,-0.075" Grid.RowSpan="2"/>
+               TextDecorations="Underline" Foreground="White" 
+               FontSize="14" HorizontalAlignment="Center" 
+               Grid.Column="0" Margin="119,18,116,12" RenderTransformOrigin="0.508,-0.075" Grid.RowSpan="2"/>
 
-                <!-- Галочка в CheckBox, которая располагается по центру между текстом -->
-                <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="False" Margin="232,10,52,9"/>
+                <CheckBox Name="IsAgreedChB" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="False" Margin="232,10,52,9"/>
             </Grid>
-
-
-
-
-
-
-            <!-- Кнопка Войти со скругленными углами -->
-            <Button Content="Зарегистрироваться" 
-                    Width="300" Height="50" 
-                    Background="#FE9CB0 " Foreground="White" 
-                    FontSize="26" HorizontalAlignment="Center" 
-                    BorderThickness="0" Margin="0,10,0,0" 
-                    >
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" 
-                                CornerRadius="25">
-                            <ContentPresenter 
-                                HorizontalAlignment="Center" 
-                                VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
+            <Button Name="SignUpBtn" Click="SignUpBtn_Click" Content="Зарегистрироваться" 
+            Width="300" Height="50" 
+            Background="#FE9CB0 " Foreground="White" 
+            FontSize="26" HorizontalAlignment="Center" 
+            BorderThickness="0" Margin="0,10,0,0" 
+            >
             </Button>
 
             <TextBlock  Text="Уже есть аккаунт?" 
-            HorizontalAlignment="Center" 
-            FontSize="16" Foreground="White" 
-            Margin="0,20,0,0"
-         TextDecorations="Underline" Cursor="Hand"
-        MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"/>
+                HorizontalAlignment="Center" 
+                FontSize="16" Foreground="White" 
+                Margin="0,20,0,0"
+                TextDecorations="Underline" Cursor="Hand"
+                MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"/>   
         </StackPanel>
     </Grid>
 </Window>

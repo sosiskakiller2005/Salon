@@ -3,13 +3,13 @@
     <Style TargetType="TextBox">
         <Setter Property="FontSize" Value="20" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Width" Value="250" />
+        <Setter Property="Width" Value="270" />
         <Setter Property="Height" Value="40" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Border Name="bBorder" CornerRadius="15" Background="Transparent" Padding="5"
-                            BorderThickness="1" BorderBrush="Black">
+                    <Border Name="Border" CornerRadius="15" Background="#F795A4" Padding="5"
+                            BorderThickness="0">
                         <ScrollViewer Name="PART_ContentHost" FontSize="20" VerticalScrollBarVisibility="Disabled"/>
                     </Border>
                 </ControlTemplate>
