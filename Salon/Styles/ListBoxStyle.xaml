@@ -14,7 +14,15 @@
                                 </Ellipse.Fill>
                             </Ellipse>
                             <Border Width="5"/>
-                            <TextBlock Text="{Binding Fullname}" TextWrapping="Wrap" Width="200" VerticalAlignment="Center" TextAlignment="Center" FontSize="18"/>
+                            <TextBlock TextWrapping="Wrap" Width="200" VerticalAlignment="Center" TextAlignment="Center" FontSize="18">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1} {2}">
+                                        <Binding Path="Lastname"/>
+                                        <Binding Path="Name"/>
+                                        <Binding Path="Surname"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
                         </StackPanel>
                         <Border Height="5"/>
                     </StackPanel>
@@ -40,7 +48,15 @@
                             </Border>
                             <Border Width="50"/>
                             <StackPanel VerticalAlignment="Center">
-                                <TextBlock Text="{Binding Fullname}" FontSize="27" TextWrapping="Wrap" Width="250" VerticalAlignment="Center" TextAlignment="Center"/>
+                                <TextBlock FontSize="27" TextWrapping="Wrap" Width="250" VerticalAlignment="Center" TextAlignment="Center">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                                            <Binding Path="Lastname"/>
+                                            <Binding Path="Name"/>
+                                            <Binding Path="Surname"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
                                 <TextBlock VerticalAlignment="Center" TextAlignment="Center">
                                     <TextBlock.Text>
                                         <MultiBinding StringFormat="{}{0}, Стаж: {1} лет">
@@ -129,9 +145,26 @@
                                 <Border Height="10"/>
                                 <TextBlock Text="{Binding DateTime, StringFormat={}{0:dd.MM.yyy HH:mm}}" VerticalAlignment="Center"/>
                                 <Border Height="10"/>
-                                <TextBlock Text="{Binding Client.Fullname}" VerticalAlignment="Center"/>
+                                <TextBlock TextWrapping="Wrap" Width="200" VerticalAlignment="Center">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                                            <Binding Path="Client.Lastname"/>
+                                            <Binding Path="Client.Name"/>
+                                            <Binding Path="Client.Surname"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
                                 <Border Height="10"/>
-                                <TextBlock Text="{Binding Employees.Fullname}" VerticalAlignment="Center"/>
+                                <Border Height="10"/>
+                                <TextBlock TextWrapping="Wrap" Width="200" VerticalAlignment="Center">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                                            <Binding Path="Employees.Lastname"/>
+                                            <Binding Path="Employees.Name"/>
+                                            <Binding Path="Employees.Surname"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
                                 <Border Height="10"/>
                             </StackPanel>
                             <Border Height="5"/>

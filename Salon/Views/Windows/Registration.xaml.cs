@@ -77,14 +77,8 @@ namespace Salon
                         mainWindow.Show();
                         Close();
                     }
-                    catch (System.Data.Entity.Validation.DbEntityValidationException exc)
+                    catch (Exception exc)
                     {
-                        //var errorMessages = exc.EntityValidationErrors
-                        //    .SelectMany(eve => eve.ValidationErrors)
-                        //    .Select(ve => $"Свойство: {ve.PropertyName} — {ve.ErrorMessage}");
-
-                        //string fullErrorMessage = string.Join(Environment.NewLine, errorMessages);
-                        //MessageBoxHelper.Error("Ошибка регистрации. Проверьте введённые данные:\n" + fullErrorMessage);
                         MessageBoxHelper.Error("Ошибка регистрации. Проверьте введенные данные.\n" + exc.Message);
                     }
                 }

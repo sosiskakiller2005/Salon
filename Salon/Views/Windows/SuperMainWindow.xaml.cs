@@ -93,17 +93,21 @@ namespace Salon
         {
             Filter();
         }
-        private void Filter ()
+        private void Filter()
         {
-            if (SearchTb.Text != string.Empty)
+            string searchString = SearchTb.Text.ToLower();
+            if (!string.IsNullOrWhiteSpace(searchString))
             {
-                //employees = employees.Where(em => em.Fullname.Contains(SearchTb.Text)).ToList();
+                EmployeesLb.ItemsSource = employees.Where(em =>
+                    (em.Name != null && em.Name.ToLower().Contains(searchString)) ||
+                    (em.Lastname != null && em.Lastname.ToLower().Contains(searchString)) ||
+                    (em.Surname != null && em.Surname.ToLower().Contains(searchString))
+                ).ToList();
             }
             else
             {
-                employees = App.GetContext().Employees.ToList();
+                EmployeesLb.ItemsSource = employees;
             }
-            EmployeesLb.ItemsSource = employees;    
         }
         #endregion
 

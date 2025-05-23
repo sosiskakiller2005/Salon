@@ -11,6 +11,29 @@
     <StackPanel Margin="20">
         <TextBlock Text="Здравствуйте" FontSize="30"/>
         <Border Height="20"/>
-        <ListBox Name="TimetableLb" Style="{StaticResource timetableLb}" Height="650" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+        <Border Height="45 0" CornerRadius="30">
+            <Border.Background>
+                <SolidColorBrush Color="White" />
+            </Border.Background>
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="4" ShadowDepth="4" Direction="-90" Color="Black" Opacity="0.25" />
+            </Border.Effect>
+            <ListBox Name="TimetableLb" Style="{StaticResource timetableLb}"  ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="10" />
+        </Border>
+        <Border Height="10"/>
+        <Border Height="150" CornerRadius="30">
+           <Border.Background>
+               <SolidColorBrush Color="White" />
+           </Border.Background>
+           <Border.Effect>
+               <DropShadowEffect BlurRadius="4" ShadowDepth="4" Direction="-90" Color="Black" Opacity="0.25" />
+           </Border.Effect>
+           <StackPanel Margin="20 10">
+               <TextBlock Text="Инструкция:" FontSize="25"/>
+               <TextBlock Text="Прими звонок,узнай данные(Имя,фамилия,номер телефона,услуга):" FontSize="18" TextWrapping="Wrap" Width="600" HorizontalAlignment="Left"/>
+               <TextBlock Text="Запиши клиента на выбранную услугу,огласи прайс,пожелай хорошего дня!" FontSize="18" TextWrapping="Wrap" Width="600" HorizontalAlignment="Left"/>
+               <TextBlock Text="Обнови приложение и готово!" FontSize="18" TextWrapping="Wrap" Width="600" HorizontalAlignment="Left"/>
+           </StackPanel>
+        </Border>
     </StackPanel>
 </Page>
