@@ -1,0 +1,157 @@
+﻿<Window x:Class="Salon.Views.Windows.AddEditEmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Salon.Views.Windows"
+        mc:Ignorable="d"
+        Title="AddEditEmployeeWindow" 
+            Height="470" Width="800"
+    ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
+    <Grid Name="EmployeeGrid">
+        <!-- Фон -->
+        <Grid.Background>
+            <ImageBrush ImageSource="\Images\Desktop - 1.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".09*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Name="AddEmployeeTbl" Text="Добавление сотрудника" Foreground="White" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="IBM Plex Serif" Grid.ColumnSpan="2"/>
+        <TextBlock Name="EditEmployeeTbl" Text="Изменение сотрудника" Foreground="White" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="IBM Plex Serif" Grid.ColumnSpan="2"/>
+        <StackPanel Grid.Row="1"  VerticalAlignment="Top">
+            <Border Width="270" CornerRadius="20" Background="#F795A4 " Padding="5" Margin="0,0,0,10">
+                <Grid>
+                    <Image Source="\Images\padlock.png" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" />
+                    <TextBox x:Name="WorkerTextBox" Text="{Binding Name}" Background="#F795A4 "  Height="30" FontSize="16" 
+                         HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                         BorderThickness="0" Margin="32,0,3,0" Foreground="White"
+                         GotFocus="WorkerTextBox_GotFocus"  LostFocus="WorkerTextBox_LostFocus"
+                         Width="220" Style="{x:Null}"/>
+                    <TextBlock x:Name="workerPlaceholder" FontFamily="IBM Plex Serif"  IsHitTestVisible="False" Text="Имя" Foreground="White" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0" />
+                </Grid>
+            </Border>
+            <Border Width="270" CornerRadius="20" Background="#F795A4 " Padding="5" Margin="0,0,0,10">
+                <Grid>
+                    <Image Source="\Images\padlock.png" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" />
+                    <TextBox x:Name="LastnameTb" Text="{Binding Lastname}" Background="#F795A4 "  Height="30" FontSize="16" 
+             HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+             BorderThickness="0" Margin="32,0,3,0" Foreground="White"
+             GotFocus="LastnameTb_GotFocus"  LostFocus="LastnameTb_LostFocus"
+             Width="220" Style="{x:Null}"/>
+                    <TextBlock x:Name="lastnamePlaceHolder" FontFamily="IBM Plex Serif"  IsHitTestVisible="False" Text="Фамилия" Foreground="White" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0" />
+                </Grid>
+            </Border>
+            <Border Width="270" CornerRadius="20" Background="#F795A4 " Padding="5" Margin="0,0,0,10">
+                <Grid>
+                    <Image Source="\Images\padlock.png" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" />
+                    <TextBox x:Name="SurnameTb" Text="{Binding Surname}" Background="#F795A4 "  Height="30" FontSize="16" 
+                         HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                         BorderThickness="0" Margin="32,0,3,0" Foreground="White"
+                         GotFocus="SurnameTb_GotFocus"  LostFocus="SurnameTb_LostFocus"
+                         Width="220" Style="{x:Null}"/>
+                    <TextBlock x:Name="surnamePlaceholder" FontFamily="IBM Plex Serif"  IsHitTestVisible="False" Text="Отчество" Foreground="White" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0" />
+                </Grid>
+            </Border>
+
+            <Border CornerRadius="20" Width="270"  Background="#F795A4 " Padding="5" Margin="0,0,0,10">
+                <Grid>
+                    <Image Source="\Images\padlock.png" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" />
+                    <TextBox x:Name="loginTextBox" Text="{Binding Login}" Background="#F795A4 " Height="30" FontSize="16" 
+                         HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                         BorderThickness="0" Margin="32,0,3,0" Foreground="White" Style="{x:Null}"
+                         GotFocus="loginTextBox_GotFocus"  LostFocus="loginTextBox_LostFocus" Width="220"/>
+                    <TextBlock x:Name="loginPlaceholder" FontFamily="IBM Plex Serif"  IsHitTestVisible="False" Text="Логин" Foreground="White" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0" />
+                </Grid>
+            </Border>
+
+            <ComboBox Name="RoleCmb" Style="{StaticResource roundedCornersComboBox}" SelectedItem="{Binding Position}"/>
+            <Border Height="20"/>
+            <TextBlock Text="Опыт:" Foreground="White" FontSize="18" HorizontalAlignment="Center"/>
+            <TextBox x:Name="ExperienceTb" Text="{Binding Expirience}" PreviewTextInput="ExperienceTb_PreviewTextInput"/>
+            <Border Height="20"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock Text="Телефон:" Foreground="White" FontSize="18" HorizontalAlignment="Center"/>
+            <TextBox x:Name="PhoneTb" Text="{Binding Phone}"/>
+            <Border Height="20"/>
+            <StackPanel Margin="0,10,0,0">
+                <Button Name="SelectPhotoBtn" Content="Выбрать фото" Click="SelectPhotoBtn_Click"/>
+                <TextBlock x:Name="PhotoFileNameTb" HorizontalAlignment="Center" Foreground="White" FontSize="14"/>
+            </StackPanel>
+            <Border Height="20"/>
+            <Border Width="270" CornerRadius="20" Background="#F795A4" Padding="5" Margin="0,0,0,10">
+                <Grid>
+                    <Image Source="\Images\key.png" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" >
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="45.726"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                    <PasswordBox x:Name="passwordBox" Background="#F795A4 " 
+                     Height="30" FontSize="16" Foreground="White" 
+                 HorizontalContentAlignment="Left" 
+                     VerticalContentAlignment="Center"
+                 BorderThickness="0" Margin="27,0,3,0"
+                      GotFocus="passwordBox_GotFocus"  
+                     LostFocus="passwordBox_LostFocus"/>
+                    <TextBlock x:Name="passwordPlaceholder" 
+                   IsHitTestVisible="False" 
+                   Text="Пароль" Foreground="White" 
+                   FontSize="18" VerticalAlignment="Center" 
+                   HorizontalAlignment="Left" Margin="50,0,0,0" />
+                </Grid>
+            </Border>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Согласны с политикой" 
+           TextDecorations="Underline" Foreground="White" 
+           FontSize="14" HorizontalAlignment="Center" 
+           Grid.Column="0" Grid.Row="0"/>
+
+                <TextBlock Text="компании" 
+           TextDecorations="Underline" Foreground="White" 
+           FontSize="14" HorizontalAlignment="Center" 
+           Grid.Column="0" Margin="119,18,116,12" RenderTransformOrigin="0.508,-0.075" Grid.RowSpan="2"/>
+
+                <CheckBox Name="IsAgreedChB" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="False" Margin="232,10,52,9"/>
+            </Grid>
+            <Button Name="SignUpBtn" Click="SignUpBtn_Click" Content="Зарегистрироваться" 
+        Width="300" Height="50" 
+        Background="#FE9CB0 " Foreground="White" 
+        FontSize="26" HorizontalAlignment="Center" 
+        BorderThickness="0" Margin="0,10,0,0" 
+        >
+            </Button>
+
+            <TextBlock  Text="Уже есть аккаунт?" 
+            HorizontalAlignment="Center" 
+            FontSize="16" Foreground="White" 
+            Margin="0,20,0,0"
+            TextDecorations="Underline" Cursor="Hand"
+            MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"/>
+        </StackPanel>
+    </Grid>
+</Window>

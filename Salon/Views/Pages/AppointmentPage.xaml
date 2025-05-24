@@ -25,9 +25,9 @@
         
         <TextBlock Text="Записать клиента" HorizontalAlignment="Center" FontSize="30"/>
         <TextBlock Text="Выберите услугу" HorizontalAlignment="Center" Grid.Row="2"/>
-        <ComboBox Name="ServiceCmb" Height="50" Grid.Row="3"/>
+        <ComboBox Name="ServiceCmb" Style="{StaticResource LongRoundedCornersComboBox}" Height="50" Grid.Row="3"/>
         <TextBlock Text="Выберите мастера" HorizontalAlignment="Center" Grid.Row="4"/>
-        <ComboBox Name="MasterCmb" Height="50" Grid.Row="5"/>
+        <ComboBox Name="MasterCmb" Style="{StaticResource LongRoundedCornersComboBox}" Height="50" Grid.Row="5"/>
         <TextBlock Text="Выберите дату и время" HorizontalAlignment="Center" Grid.Row="6"/>
         <DatePicker Name="AppointmentDp" Grid.Row="7"/>
         <tp:TimePickerSlider Name="AppointmentTp" Grid.Row="8" VerticalAlignment="Center" Width="700"/>

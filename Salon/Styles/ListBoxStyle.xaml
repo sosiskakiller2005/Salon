@@ -145,7 +145,7 @@
                                 <Border Height="10"/>
                                 <TextBlock Text="{Binding DateTime, StringFormat={}{0:dd.MM.yyy HH:mm}}" VerticalAlignment="Center"/>
                                 <Border Height="10"/>
-                                <TextBlock TextWrapping="Wrap" Width="200" VerticalAlignment="Center">
+                                <TextBlock VerticalAlignment="Center">
                                     <TextBlock.Text>
                                         <MultiBinding StringFormat="{}{0} {1} {2}">
                                             <Binding Path="Client.Lastname"/>
@@ -155,8 +155,7 @@
                                     </TextBlock.Text>
                                 </TextBlock>
                                 <Border Height="10"/>
-                                <Border Height="10"/>
-                                <TextBlock TextWrapping="Wrap" Width="200" VerticalAlignment="Center">
+                                <TextBlock VerticalAlignment="Center">
                                     <TextBlock.Text>
                                         <MultiBinding StringFormat="{}{0} {1} {2}">
                                             <Binding Path="Employees.Lastname"/>

@@ -17,19 +17,19 @@ using System.Windows.Shapes;
 
 namespace Salon.Views.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для AppointmentPage.xaml
-    /// </summary>
+    /// <summary>  
+    /// Логика взаимодействия для AppointmentPage.xaml  
+    /// </summary>  
     public partial class AppointmentPage : Page
     {
         private SityStarDbEntities _context = App.GetContext();
         private DateTime _appointmentDateTime;
-        //private DateTime _appointmentDateTime2;
+
         public AppointmentPage()
         {
             InitializeComponent();
 
-            #region заполнение комбобоксов
+            #region заполнение комбобоксов  
             ServiceCmb.ItemsSource = _context.Services.ToList();
             ServiceCmb.SelectedIndex = 0;
             ServiceCmb.DisplayMemberPath = "Name";
@@ -38,7 +38,6 @@ namespace Salon.Views.Pages
             MasterCmb.SelectedIndex = 0;
             MasterCmb.DisplayMemberPath = "Fullname";
             #endregion
-
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -48,9 +47,7 @@ namespace Salon.Views.Pages
                 DateTime AppointmentDateTime = new DateTime(AppointmentDp.SelectedDate.Value.Year, AppointmentDp.SelectedDate.Value.Month,
                     AppointmentDp.SelectedDate.Value.Day, AppointmentTp.Time.Hour, AppointmentTp.Time.Minute, 0);
                 _appointmentDateTime = AppointmentDateTime;
-                //DateTime AppointmentDateTime2 = new DateTime(AppointmentDp.SelectedDate.Value.Year, AppointmentDp.SelectedDate.Value.Month,
-                //    AppointmentDp.SelectedDate.Value.Day, AppointmentTp.Time.Hour + 1, AppointmentTp.Time.Minute, 0);
-                //_appointmentDateTime2 = AppointmentDateTime2;
+
                 Services selectedService = ServiceCmb.SelectedItem as Services;
                 Employees selectedEmployee = MasterCmb.SelectedItem as Employees;
                 if (CheckDate(selectedEmployee))
@@ -63,12 +60,15 @@ namespace Salon.Views.Pages
                 MessageBoxHelper.Error("Заполните все поля для ввода.");
             }
         }
+
         private bool CheckDate(Employees selectedMaster)
         {
             List<Appointment> appointments = _context.Appointment.ToList();
-            if (appointments.FirstOrDefault(a => a.DateTime == _appointmentDateTime && a.Employees == MasterCmb.SelectedItem as Employees) != null)
+            if (appointments.Any(a => a.Employees.Id == selectedMaster.Id &&
+                a.DateTime >= _appointmentDateTime.AddHours(-1) &&
+                a.DateTime < _appointmentDateTime.AddHours(1)))
             {
-                MessageBoxHelper.Error("На данное время уже существует запись. Выберите другого мастера или время на час позже.");
+                MessageBoxHelper.Error("На данное время или в течение часа уже существует запись. Выберите другое время.");
                 return false;
             }
             else

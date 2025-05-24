@@ -11,7 +11,7 @@
     <StackPanel Margin="20">
         <TextBlock Text="Здравствуйте" FontSize="30"/>
         <Border Height="20"/>
-        <Border Height="45 0" CornerRadius="30">
+        <Border Height="450" CornerRadius="30">
             <Border.Background>
                 <SolidColorBrush Color="White" />
             </Border.Background>

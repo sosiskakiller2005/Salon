@@ -63,6 +63,7 @@
             </Grid>
             <Border Height="10"/>
             <ListBox Name="EmployeesLb" Style="{StaticResource EmployeeLb}" MouseDoubleClick="EmployeesLb_MouseDoubleClick" Background="Transparent" BorderThickness="0" Height="700" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+            <TextBlock HorizontalAlignment="Center"><Hyperlink Name="AddEmployeeHl" Click="AddEmployeeHl_Click" Foreground="Gray">Добавить нового</Hyperlink></TextBlock>
 
         </StackPanel>
         <!--#endregion-->

@@ -16,6 +16,7 @@ using System.Windows.Threading;
 using Salon.AppData;
 using Salon.Model;
 using Salon.Views.Pages;
+using Salon.Views.Windows;
 
 namespace Salon
 {
@@ -48,6 +49,17 @@ namespace Salon
             FrameHelper.selectedFrame = MainFrm;
         }
 
+        private void EmployeesLb_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            AddEditEmployeeWindow addEditEmployeeWindow = new AddEditEmployeeWindow(EmployeesLb.SelectedItem as Employees);
+            addEditEmployeeWindow.ShowDialog();
+            if (addEditEmployeeWindow.DialogResult == true)
+            {
+                EmployeesLb.ItemsSource = _context.Employees.ToList();
+                Filter();
+            }
+        }
+
         #region навигация
         private void HomeBtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -72,10 +84,6 @@ namespace Salon
 
         }
 
-        private void EmployeesLb_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
-        }
         private void AppointmentBtn_Click(object sender, RoutedEventArgs e)
         {
             AppointmentPage appointmentPage = new AppointmentPage();
@@ -103,13 +111,42 @@ namespace Salon
                     (em.Lastname != null && em.Lastname.ToLower().Contains(searchString)) ||
                     (em.Surname != null && em.Surname.ToLower().Contains(searchString))
                 ).ToList();
+                if (EmployeesLb.Items.Count == 0)
+                {
+                    if (AuthoriseHelper.selectedUser.Position.Id == 1)
+                    {
+                        EmployeesLb.Visibility = Visibility.Collapsed;
+                    }
+                    else
+                    {
+                        EmployeesLb.Visibility = Visibility.Visible;
+                    }
+                }
+                else
+                {
+                    EmployeesLb.Visibility = Visibility.Visible;
+                }
             }
             else
+            {
+                EmployeesLb.ItemsSource = employees;
+            }
+            if (string.IsNullOrWhiteSpace(SearchTb.Text))
             {
                 EmployeesLb.ItemsSource = employees;
             }
         }
         #endregion
 
+        private void AddEmployeeHl_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditEmployeeWindow addEditEmployeeWindow = new AddEditEmployeeWindow();
+            addEditEmployeeWindow.ShowDialog();
+            if (addEditEmployeeWindow.DialogResult == true)
+            {
+                EmployeesLb.ItemsSource = _context.Employees.ToList();
+                Filter();
+            }   
+        }
     }
 }

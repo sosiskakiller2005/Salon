@@ -8,6 +8,7 @@
   <Setter Property="Foreground" Value="White" />
 </Style>
 
+<!--#region закругленный комбобокс-->
 <Style x:Key="ComboBoxTextBoxStyle" TargetType="{x:Type TextBox}">
   <Setter Property="Template">
       <Setter.Value>
@@ -137,5 +138,139 @@
       </Setter.Value>
   </Setter>
 </Style>
+   <!--#endregion-->
+
+
+    <!--#region длинный закругленный комбобокс-->
+    <Style x:Key="LongComboBoxTextBoxStyle" TargetType="{x:Type TextBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Grid>
+                        <Border Name="ComboBoxTextBoxStyleBorder" CornerRadius="2"
+                  BorderThickness="0,1,0,1" 
+                      Margin="10,3,1,1"
+                  Background="{TemplateBinding Background}">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="Background" Value="#F795A4"/>
+                                        </Trigger>
+                                        <Trigger Property="IsFocused" Value="true">
+                                            <Setter Property="Background" Value="#F795A4"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+                        <ScrollViewer x:Name="PART_ContentHost"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <!--Rounded corners combo box-->
+    <Style TargetType="{x:Type ComboBox}" x:Key="LongRoundedCornersComboBox">
+       <Setter Property="Template">
+           <Setter.Value>
+               <ControlTemplate TargetType="{x:Type ComboBox}">
+                   <!-- Change the width of the ComboBox here -->
+                   <Border Name="roundedCornerComboBoxBorder" BorderBrush="Black" BorderThickness="0" CornerRadius="15" ClipToBounds="True" Background="#F795A4" Height="40" Width="500">
+                       <Border.Style>
+                           <Style TargetType="Border">
+                               <Style.Triggers>
+                                   <Trigger Property="IsMouseOver" Value="true">
+                                       <Setter Property="Background" Value="#F795A4"/>
+                                   </Trigger>
+                               </Style.Triggers>
+                           </Style>
+                       </Border.Style>
+                       <Canvas>
+                           <Grid>
+                               <Grid.ColumnDefinitions>
+                                   <ColumnDefinition/>
+                               </Grid.ColumnDefinitions>
+                               <TextBox Name="PART_EditableTextBox" 
+                                        Panel.ZIndex="0"
+                                        Style="{StaticResource LongComboBoxTextBoxStyle}"
+                                        Padding="0,0,0,0"
+                                        IsHitTestVisible="False"
+                                        Background="Transparent"
+                                        Foreground="White"
+                                        Height="{TemplateBinding Height}">
+                               </TextBox>
+                               <ToggleButton Grid.Column="1" Margin="400, 0, 0, 0"
+                                             Panel.ZIndex="1"
+                                             HorizontalAlignment="Right"
+                                             VerticalAlignment="Center"
+                                             BorderBrush="Transparent"
+                                             Background="Transparent"
+                                             Width="60"
+                                             Height="20"
+                                             IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                             HorizontalContentAlignment="Right"
+                                             ClickMode="Press">
+
+                                   <ToggleButton.Style>
+                                       <Style TargetType="ToggleButton">
+                                           <Style.Triggers>
+                                               <Trigger Property="IsMouseOver"
+                                                        Value="true">
+                                                   <Setter Property="Background"
+                                                           Value="#F795A4" />
+                                               </Trigger>
+                                           </Style.Triggers>
+                                       </Style>
+                                   </ToggleButton.Style>
+
+                                   <Path Grid.Column="1"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"
+                                         Data="M 0 0 L 4 4 L 8 0 Z"
+                                         Fill="White" />
+                               </ToggleButton>
+                               <ContentPresenter Name="ContentSite"
+                                                 Cursor="Arrow"
+                                                 Content="{TemplateBinding SelectionBoxItem}"
+                                                 ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                                 ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                                 VerticalAlignment="Center"
+                                                 HorizontalAlignment="Left"
+                                                 Margin="3,0,0,0">
+                               </ContentPresenter>
+                               <Popup Name="Popup"
+                                      Placement="Bottom"
+                                      IsOpen="{TemplateBinding IsDropDownOpen}"
+                                      AllowsTransparency="True" 
+                                      Focusable="False"  
+                                      Width="500" 
+                                      PopupAnimation="Slide">
+                                   <Grid Name="DropDown"
+                                         SnapsToDevicePixels="True"                
+                                         MinWidth="500"
+                                         MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                       <Border 
+                                           x:Name="DropDownBorder"
+                                           BorderThickness="1"
+                                           CornerRadius="5"
+                                           Background="White"
+                                           BorderBrush="Black"/>
+                                       <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                           <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                       </ScrollViewer>
+                                   </Grid>
+                               </Popup>
+                           </Grid>
+                       </Canvas>
+                   </Border>
+               </ControlTemplate>
+           </Setter.Value>
+       </Setter>
+    </Style>
+    <!--#endregion-->
 
 </ResourceDictionary>

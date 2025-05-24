@@ -24,6 +24,13 @@ namespace Salon.Model
         public string Lastname { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        public string Fullname
+        {
+            get
+            {
+                return $"{Name} {Lastname} {Surname}".Trim();
+            }
+        }
         public int PositionId { get; set; }
         public int Expirience { get; set; }
         public string Phone { get; set; }
