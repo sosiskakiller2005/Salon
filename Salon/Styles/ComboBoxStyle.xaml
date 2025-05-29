@@ -10,7 +10,7 @@
 
 <!--#region закругленный комбобокс-->
 <Style x:Key="ComboBoxTextBoxStyle" TargetType="{x:Type TextBox}">
-  <Setter Property="Template">
+        <Setter Property="Template">
       <Setter.Value>
           <ControlTemplate TargetType="{x:Type TextBox}">
               <Grid>

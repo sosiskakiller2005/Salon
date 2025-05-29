@@ -44,6 +44,8 @@ namespace Salon
             timer.Start();
             #endregion
 
+            RoleTbl.Text = AuthoriseHelper.selectedUser.Position.Name;
+
             EmployeesLb.ItemsSource = _context.Employees.ToList();
 
             FrameHelper.selectedFrame = MainFrm;
@@ -81,7 +83,8 @@ namespace Salon
 
         private void FileBtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            AppointmentPage appointmentPage = new AppointmentPage();
+            MainFrm.Navigate(appointmentPage);
         }
 
         private void AppointmentBtn_Click(object sender, RoutedEventArgs e)

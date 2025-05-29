@@ -32,6 +32,7 @@ namespace Salon.Views.Windows
             InitializeComponent();
             AddEmployeeTbl.Visibility = Visibility.Visible;
             EditEmployeeTbl.Visibility = Visibility.Collapsed;
+            SignUpBtn.Content = "Зарегистрировать сотрудника";
             RoleCmb.ItemsSource = _context.Position.ToList();
             RoleCmb.DisplayMemberPath = "Name";
             RoleCmb.SelectedIndex = 0;
@@ -41,6 +42,7 @@ namespace Salon.Views.Windows
             InitializeComponent();
             AddEmployeeTbl.Visibility = Visibility.Collapsed;
             EditEmployeeTbl.Visibility = Visibility.Visible;
+            SignUpBtn.Content = "Изменить данные сотрудника";
             _selectedEmployee = selectedEmployee;
             RoleCmb.ItemsSource = _context.Position.ToList();
             RoleCmb.DisplayMemberPath = "Name";

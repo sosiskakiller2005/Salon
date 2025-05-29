@@ -1,4 +1,5 @@
 ﻿using Salon.Model;
+using Salon.Views.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,12 @@ namespace Salon.Views.Pages
 
         private void EmployeesLb_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            AddEditEmployeeWindow addEditEmployeeWindow = new AddEditEmployeeWindow(EmployeesLb.SelectedItem as Employees);
+            addEditEmployeeWindow.ShowDialog();
+            if (addEditEmployeeWindow.DialogResult == true)
+            {
+                EmployeesLb.ItemsSource = _context.Employees.ToList();
+            }
         }
 
     }

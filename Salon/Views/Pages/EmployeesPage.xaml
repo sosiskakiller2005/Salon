@@ -11,6 +11,6 @@
     <StackPanel>
         <TextBlock Text="Мастера" FontSize="25" Margin="10"/>
         <Border Height="20"/>
-        <ListBox Name="EmployeesLb" Style="{StaticResource BigEmployeeLb}" ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="720"/>
+        <ListBox Name="EmployeesLb" Style="{StaticResource BigEmployeeLb}" ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="720" MouseDoubleClick="EmployeesLb_MouseDoubleClick"/>
     </StackPanel>
 </Page>

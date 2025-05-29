@@ -75,14 +75,14 @@
             <ComboBox Name="RoleCmb" Style="{StaticResource roundedCornersComboBox}" SelectedItem="{Binding Position}"/>
             <Border Height="20"/>
             <TextBlock Text="Опыт:" Foreground="White" FontSize="18" HorizontalAlignment="Center"/>
-            <TextBox x:Name="ExperienceTb" Text="{Binding Expirience}" PreviewTextInput="ExperienceTb_PreviewTextInput"/>
+            <TextBox x:Name="ExperienceTb" Text="{Binding Expirience}" Foreground="White" PreviewTextInput="ExperienceTb_PreviewTextInput"/>
             <Border Height="20"/>
 
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock Text="Телефон:" Foreground="White" FontSize="18" HorizontalAlignment="Center"/>
-            <TextBox x:Name="PhoneTb" Text="{Binding Phone}"/>
+            <TextBox x:Name="PhoneTb" Text="{Binding Phone}" Foreground="White"/>
             <Border Height="20"/>
             <StackPanel Margin="0,10,0,0">
                 <Button Name="SelectPhotoBtn" Content="Выбрать фото" Click="SelectPhotoBtn_Click"/>

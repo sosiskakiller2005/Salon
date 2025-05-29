@@ -73,6 +73,8 @@
         <!--#region Второе меню -->
         <StackPanel Grid.Column="3">
             <StackPanel Orientation="Horizontal">
+                <TextBlock Name="RoleTbl" FontSize="15"/>
+                <Border Width="10"/>
                 <TextBlock Name="TimeTbl" FontSize="15"/>
             </StackPanel>
             <Border Height="50"/>
